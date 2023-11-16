@@ -1,0 +1,4 @@
+#Thu Nov 16 13:08:46 ICT 2023
+base.0=/Users/sonluu/Projects/flutter/msb_flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
