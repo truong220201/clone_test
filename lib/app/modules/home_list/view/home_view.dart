@@ -19,6 +19,7 @@ class HomeView extends StatefulWidget {
   @override
   State<HomeView> createState() => _HomeViewState();
 }
+
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
@@ -106,8 +107,8 @@ class _HomeViewState extends State<HomeView> {
   _showListCart() {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       return !state.isLoading
-          ? state.listInfo != null || state.listInfo == []
-              ? Column(children: _listCard(state.showingList!))
+          ? state.showingList != null || state.showingList == []
+              ? Column(children: _listCard(state.showingList ?? []))
               : const Center(
                   child: Text('Khong co du lieu!'),
                 )
@@ -135,5 +136,4 @@ class _HomeViewState extends State<HomeView> {
         )
     ];
   }
-
 }

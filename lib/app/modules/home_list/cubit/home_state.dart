@@ -7,12 +7,11 @@ part 'home_state.freezed.dart';
 @freezed
 class HomeState with _$HomeState {
   const HomeState._();
-  const factory HomeState(
+
+  factory HomeState(
       {List<InfoModel>? listInfo,
       List<InfoModel>? showingList,
-      List<InfoModel>? waitingList,
-      List<InfoModel>? approveList,
-      List<InfoModel>? refuseList,
+      Map<String, List<InfoModel>>? statusList,
       @Default(true) bool isLoading,
       String? errorConnect,
       @Default(FilterHome.waiting) FilterHome filter}) = _HomeState;

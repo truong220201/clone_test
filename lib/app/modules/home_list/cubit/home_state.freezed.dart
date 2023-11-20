@@ -18,9 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   List<InfoModel>? get listInfo => throw _privateConstructorUsedError;
   List<InfoModel>? get showingList => throw _privateConstructorUsedError;
-  List<InfoModel>? get waitingList => throw _privateConstructorUsedError;
-  List<InfoModel>? get approveList => throw _privateConstructorUsedError;
-  List<InfoModel>? get refuseList => throw _privateConstructorUsedError;
+  Map<String, List<InfoModel>>? get statusList =>
+      throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get errorConnect => throw _privateConstructorUsedError;
   FilterHome get filter => throw _privateConstructorUsedError;
@@ -38,9 +37,7 @@ abstract class $HomeStateCopyWith<$Res> {
   $Res call(
       {List<InfoModel>? listInfo,
       List<InfoModel>? showingList,
-      List<InfoModel>? waitingList,
-      List<InfoModel>? approveList,
-      List<InfoModel>? refuseList,
+      Map<String, List<InfoModel>>? statusList,
       bool isLoading,
       String? errorConnect,
       FilterHome filter});
@@ -61,9 +58,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? listInfo = freezed,
     Object? showingList = freezed,
-    Object? waitingList = freezed,
-    Object? approveList = freezed,
-    Object? refuseList = freezed,
+    Object? statusList = freezed,
     Object? isLoading = null,
     Object? errorConnect = freezed,
     Object? filter = null,
@@ -77,18 +72,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.showingList
           : showingList // ignore: cast_nullable_to_non_nullable
               as List<InfoModel>?,
-      waitingList: freezed == waitingList
-          ? _value.waitingList
-          : waitingList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>?,
-      approveList: freezed == approveList
-          ? _value.approveList
-          : approveList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>?,
-      refuseList: freezed == refuseList
-          ? _value.refuseList
-          : refuseList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>?,
+      statusList: freezed == statusList
+          ? _value.statusList
+          : statusList // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<InfoModel>>?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -116,9 +103,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   $Res call(
       {List<InfoModel>? listInfo,
       List<InfoModel>? showingList,
-      List<InfoModel>? waitingList,
-      List<InfoModel>? approveList,
-      List<InfoModel>? refuseList,
+      Map<String, List<InfoModel>>? statusList,
       bool isLoading,
       String? errorConnect,
       FilterHome filter});
@@ -137,9 +122,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? listInfo = freezed,
     Object? showingList = freezed,
-    Object? waitingList = freezed,
-    Object? approveList = freezed,
-    Object? refuseList = freezed,
+    Object? statusList = freezed,
     Object? isLoading = null,
     Object? errorConnect = freezed,
     Object? filter = null,
@@ -153,18 +136,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value._showingList
           : showingList // ignore: cast_nullable_to_non_nullable
               as List<InfoModel>?,
-      waitingList: freezed == waitingList
-          ? _value._waitingList
-          : waitingList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>?,
-      approveList: freezed == approveList
-          ? _value._approveList
-          : approveList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>?,
-      refuseList: freezed == refuseList
-          ? _value._refuseList
-          : refuseList // ignore: cast_nullable_to_non_nullable
-              as List<InfoModel>?,
+      statusList: freezed == statusList
+          ? _value._statusList
+          : statusList // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<InfoModel>>?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -184,20 +159,16 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl extends _HomeState {
-  const _$HomeStateImpl(
+  _$HomeStateImpl(
       {final List<InfoModel>? listInfo,
       final List<InfoModel>? showingList,
-      final List<InfoModel>? waitingList,
-      final List<InfoModel>? approveList,
-      final List<InfoModel>? refuseList,
+      final Map<String, List<InfoModel>>? statusList,
       this.isLoading = true,
       this.errorConnect,
       this.filter = FilterHome.waiting})
       : _listInfo = listInfo,
         _showingList = showingList,
-        _waitingList = waitingList,
-        _approveList = approveList,
-        _refuseList = refuseList,
+        _statusList = statusList,
         super._();
 
   final List<InfoModel>? _listInfo;
@@ -220,34 +191,14 @@ class _$HomeStateImpl extends _HomeState {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<InfoModel>? _waitingList;
+  final Map<String, List<InfoModel>>? _statusList;
   @override
-  List<InfoModel>? get waitingList {
-    final value = _waitingList;
+  Map<String, List<InfoModel>>? get statusList {
+    final value = _statusList;
     if (value == null) return null;
-    if (_waitingList is EqualUnmodifiableListView) return _waitingList;
+    if (_statusList is EqualUnmodifiableMapView) return _statusList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<InfoModel>? _approveList;
-  @override
-  List<InfoModel>? get approveList {
-    final value = _approveList;
-    if (value == null) return null;
-    if (_approveList is EqualUnmodifiableListView) return _approveList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<InfoModel>? _refuseList;
-  @override
-  List<InfoModel>? get refuseList {
-    final value = _refuseList;
-    if (value == null) return null;
-    if (_refuseList is EqualUnmodifiableListView) return _refuseList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
@@ -261,7 +212,7 @@ class _$HomeStateImpl extends _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(listInfo: $listInfo, showingList: $showingList, waitingList: $waitingList, approveList: $approveList, refuseList: $refuseList, isLoading: $isLoading, errorConnect: $errorConnect, filter: $filter)';
+    return 'HomeState(listInfo: $listInfo, showingList: $showingList, statusList: $statusList, isLoading: $isLoading, errorConnect: $errorConnect, filter: $filter)';
   }
 
   @override
@@ -273,11 +224,7 @@ class _$HomeStateImpl extends _HomeState {
             const DeepCollectionEquality()
                 .equals(other._showingList, _showingList) &&
             const DeepCollectionEquality()
-                .equals(other._waitingList, _waitingList) &&
-            const DeepCollectionEquality()
-                .equals(other._approveList, _approveList) &&
-            const DeepCollectionEquality()
-                .equals(other._refuseList, _refuseList) &&
+                .equals(other._statusList, _statusList) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorConnect, errorConnect) ||
@@ -290,9 +237,7 @@ class _$HomeStateImpl extends _HomeState {
       runtimeType,
       const DeepCollectionEquality().hash(_listInfo),
       const DeepCollectionEquality().hash(_showingList),
-      const DeepCollectionEquality().hash(_waitingList),
-      const DeepCollectionEquality().hash(_approveList),
-      const DeepCollectionEquality().hash(_refuseList),
+      const DeepCollectionEquality().hash(_statusList),
       isLoading,
       errorConnect,
       filter);
@@ -305,27 +250,21 @@ class _$HomeStateImpl extends _HomeState {
 }
 
 abstract class _HomeState extends HomeState {
-  const factory _HomeState(
+  factory _HomeState(
       {final List<InfoModel>? listInfo,
       final List<InfoModel>? showingList,
-      final List<InfoModel>? waitingList,
-      final List<InfoModel>? approveList,
-      final List<InfoModel>? refuseList,
+      final Map<String, List<InfoModel>>? statusList,
       final bool isLoading,
       final String? errorConnect,
       final FilterHome filter}) = _$HomeStateImpl;
-  const _HomeState._() : super._();
+  _HomeState._() : super._();
 
   @override
   List<InfoModel>? get listInfo;
   @override
   List<InfoModel>? get showingList;
   @override
-  List<InfoModel>? get waitingList;
-  @override
-  List<InfoModel>? get approveList;
-  @override
-  List<InfoModel>? get refuseList;
+  Map<String, List<InfoModel>>? get statusList;
   @override
   bool get isLoading;
   @override

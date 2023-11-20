@@ -5,11 +5,13 @@ import 'package:msb_flutter/app/data/model/info_model.dart';
 import 'package:msb_flutter/app/data/untils/enum/enum_cosumer.dart';
 import 'package:msb_flutter/app/modules/home_list/cubit/home_state.dart';
 import 'package:msb_flutter/app/modules/home_list/repository/home_repository.dart';
+import 'package:collection/collection.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._homeRepository) : super(const HomeState());
+  HomeCubit(this._homeRepository) : super(HomeState());
 
   final HomeRepository _homeRepository;
+
   Future<void> initData() async {
     List<InfoModel>? listInfo = await _getData();
     emit(state.copyWith(listInfo: listInfo));
@@ -19,7 +21,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<List<InfoModel>?> _getData() async {
     List<InfoModel>? listInfoModel;
-
     try {
       Response response = await _homeRepository.getResponseHomeDetail();
       List<dynamic> data = response.data;
@@ -43,15 +44,18 @@ class HomeCubit extends Cubit<HomeState> {
     switch (valueChoice) {
       case (1):
         emit(state.copyWith(
-            filter: FilterHome.waiting, showingList: state.waitingList));
+            filter: FilterHome.waiting,
+            showingList: state.statusList?['waiting_list']));
         break;
       case (2):
         emit(state.copyWith(
-            filter: FilterHome.approved, showingList: state.approveList));
+            filter: FilterHome.approved,
+            showingList: state.statusList?['approve_list']));
         break;
       case (3):
         emit(state.copyWith(
-            filter: FilterHome.refuse, showingList: state.refuseList));
+            filter: FilterHome.refuse,
+            showingList: state.statusList?['refuse_list']));
         break;
       default:
         break;
@@ -59,9 +63,18 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   _addList(List<InfoModel>? list) {
+    Map<String, List<InfoModel>> statusListTemp = {
+      "waiting_list": <InfoModel>[],
+      "approve_list": <InfoModel>[],
+      "refuse_list": <InfoModel>[],
+    };
+
+    // statusListTemp = state.statusList;
+
     List<InfoModel> waitingList = [];
     List<InfoModel> approveList = [];
     List<InfoModel> refuseList = [];
+
     if (list != null) {
       for (InfoModel i in list) {
         if (i.userId == 1) {
@@ -73,11 +86,11 @@ class HomeCubit extends Cubit<HomeState> {
         }
       }
     }
-    emit(state.copyWith(
-        waitingList: waitingList,
-        refuseList: refuseList,
-        approveList: approveList,
-        showingList: waitingList));
+    statusListTemp['waiting_list'] = waitingList;
+    statusListTemp['approve_list'] = approveList;
+    statusListTemp['refuse_list'] = refuseList;
+
+    emit(state.copyWith(statusList: statusListTemp, showingList: waitingList));
   }
 
   _offLoading() {
